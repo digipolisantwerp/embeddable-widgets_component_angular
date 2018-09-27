@@ -71,13 +71,13 @@ If possible, do provide meaningful and clean commit messages. A [good commit mes
 ### Publishing
 
 Follow these steps to publish a new version of the package.
-You must have a Digipolis account with access to Nexus.
+You must be a member of the @acpaas-ui-widgets organization on GitHub.
 
 1. Increment the version in package.json
-2. Log in to the the private registry
+2. Log in to the npmjs registry
 
     ```sh
-    > npm login --registry=https://nexusrepo.antwerpen.be/repository/npm-private/
+    > npm login
     ```
 
 3. Publish the package
@@ -85,5 +85,5 @@ You must have a Digipolis account with access to Nexus.
     ```sh
     > npm run build
     > cd dist
-    > npm publish --registry=https://nexusrepo.antwerpen.be/repository/npm-private/
+    > npm publish
     ```

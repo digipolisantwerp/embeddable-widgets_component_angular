@@ -1,6 +1,8 @@
 # Smart Widget UI Starter Kit (Angular)
 
-Dit is een starter kit om een Angular 5+ front-end te bouwen voor een ACPaaS UI Smart Widget. Om meer te leren over Smart Widgets en de richtlijnen te weten om deze starter kit te gebruiken kijk dan naar de [Smart Widget index pagina](https://github.com/digipolisantwerp/smart-widgets).
+Dit is een starter kit om een Angular 6+ front-end te bouwen voor een ACPaaS UI Smart Widget. Om meer te leren over Smart Widgets en de richtlijnen te weten om deze starter kit te gebruiken kijk dan naar de [Smart Widget index pagina](https://github.com/digipolisantwerp/smart-widgets).
+
+> Deze starter kit is bedoeld voor de `@acpaas-ui/ngx-components` componenten. Op de `acpaas-ui-classic` branch vind je de oude starter kit voor [ACPaaS UI Classic](https://acpaas-ui.digipolis.be/docs/angular-migrating).
 
 Om een nieuwe widget front-end te maken:
 
@@ -21,7 +23,7 @@ Om een nieuwe widget front-end te maken:
 5. Pas alle relevante bestanden aan om de referenties naar `starter-kit`, `Starter Kit` en `example` te vervangen.
 
    - `package.json`: ACPaaS UI componenten waarvan je afhankelijk bent horen in `dependencies` te gaan
-   - `.angular-cli.json`
+   - `angular.json`
    - Andere bestanden met bovenstaande termen...
    - Verwijder `package-lock.json` en draai `npm install` om het opnieuw te genereren.
 
@@ -30,7 +32,7 @@ Om een nieuwe widget front-end te maken:
    - Vervang `README.md` door `README.example.md` en pas het aan.
    - Hernoem `CONTRIBUTING.example.md` naar `CONTRIBUTING.md` en pas het aan.
 
-7. Push jouw widget naar een nieuwe repo.
+7. Push jouw widget naar een nieuwe repo op GitHub.
 
 8. Volg de instructies uit de [Smart Widgets contributing pagina](https://github.com/digipolisantwerp/starter-kit_widget_angular/blob/master/CONTRIBUTING.md) om Digipolis op de hoogte te stellen van jouw widget en die te publiceren.
 
