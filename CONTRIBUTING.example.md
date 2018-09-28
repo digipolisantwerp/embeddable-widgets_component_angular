@@ -84,6 +84,5 @@ You must be a member of the @acpaas-ui-widgets organization on GitHub.
 
     ```sh
     > npm run build
-    > cd dist
-    > npm publish
+    > npm publish dist
     ```
