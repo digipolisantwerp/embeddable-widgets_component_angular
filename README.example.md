@@ -12,10 +12,6 @@ There is a demo app, see below for instructions on running it.
 
 ### Installing
 
-Copy the .npmrc file from this repo to your local repo to set up the link to nexusrepo.antwerpen.be npm repository.
-
-Then install (you will need to be connected to the Digipolis network):
-
 ```sh
 > npm install @acpaas-ui-widgets/ngx-example
 ```
