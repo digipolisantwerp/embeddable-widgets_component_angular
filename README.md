@@ -38,7 +38,7 @@ Om een nieuwe widget front-end te maken:
 
 ## Bijdragen aan deze starter kit
 
-Wens je wijzigingen te maken aan deze starter kit, kom dan even langs op het [#acpaas-ui-dev slack channel](https://dgpls.slack.com/messages/C4S2D7KTK) of maak een github issue.
+Wens je wijzigingen te maken aan deze starter kit, kom dan even langs op het [#acpaas-ui-ngx slack channel](https://acpaas-ui.digipolis.be/contact) of maak een github issue.
 
 ## Licentie
 
