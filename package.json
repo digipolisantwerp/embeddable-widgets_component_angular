@@ -39,7 +39,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.11.4",
+    "@angular-devkit/build-angular": "^0.12.0",
     "@angular/animations": "6.1.9",
     "@angular/cli": "^6.2.3",
     "@angular/common": "6.1.9",
