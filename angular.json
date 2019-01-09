@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "starter-kit_widget_angular": {
+    "embeddable-widgets_component_angular": {
       "root": "",
       "sourceRoot": "example",
       "projectType": "application",
@@ -18,7 +18,12 @@
             "polyfills": "example/polyfills.ts",
             "assets": [
               "example/assets",
-              "example/favicon.ico"
+              "example/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@acpaas-ui/embeddable-widgets/lib/",
+                "output": "./assets/lib"
+              }
             ],
             "styles": [
               "example/styles.scss"
@@ -50,21 +55,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "starter-kit_widget_angular:build"
+            "browserTarget": "embeddable-widgets_component_angular:build"
           },
           "configurations": {
             "prod": {
-              "browserTarget": "starter-kit_widget_angular:build:prod"
+              "browserTarget": "embeddable-widgets_component_angular:build:prod"
             },
             "production": {
-              "browserTarget": "starter-kit_widget_angular:build:production"
+              "browserTarget": "embeddable-widgets_component_angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "starter-kit_widget_angular:build"
+            "browserTarget": "embeddable-widgets_component_angular:build"
           }
         },
         "test": {
@@ -98,7 +103,7 @@
         }
       }
     },
-    "starter-kit_widget_angular-e2e": {
+    "embeddable-widgets_component_angular-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -107,7 +112,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "starter-kit_widget_angular:serve"
+            "devServerTarget": "embeddable-widgets_component_angular:serve"
           }
         },
         "lint": {
@@ -122,7 +127,7 @@
       }
     }
   },
-  "defaultProject": "starter-kit_widget_angular",
+  "defaultProject": "embeddable-widgets_component_angular",
   "schematics": {
     "@schematics/angular:class": {
       "spec": false

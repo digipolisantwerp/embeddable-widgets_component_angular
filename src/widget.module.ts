@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ExampleComponent } from './example/example.component';
+import { EmbeddableWidgetComponent } from './widget/widget.component';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   exports: [
-    ExampleComponent,
+    EmbeddableWidgetComponent,
   ],
   declarations: [
-    ExampleComponent,
+    EmbeddableWidgetComponent,
   ],
   providers: [],
 })
-export class ExampleModule { }
+export class EmbeddableWidgetsModule { }

@@ -1,1 +1,1 @@
-export * from './example.module';
+export * from './widget.module';
