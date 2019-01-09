@@ -1,6 +1,21 @@
 <header>
     <h2>Embeddable Widget Example</h2>
 </header>
-<div class="u-container u-bg-light">
-    <aui-embeddable-widget widgetUrl="/assets/widget-definition.json"></aui-embeddable-widget>
+<div class="u-container">
+
+    <aui-embeddable-widget 
+        widgetUrl="/assets/widget-definition.json"
+        [props]="{ subject: 'World', onClick: onButtonClicked }"
+        class="u-bg-light">
+    </aui-embeddable-widget>
+
+    <p class="u-margin-top-xs">
+        The widget is the part in <span class="u-bg-light">gray</span>.
+    </p>
+
+    <p *ngIf="clicks">
+        Received {{clicks}}
+        <span *ngIf="clicks === 1">click</span>
+        <span *ngIf="clicks > 1">clicks</span>
+    </p>
 </div>

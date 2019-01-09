@@ -14,9 +14,8 @@ export class EmbeddableWidgetComponent implements AfterViewInit {
   widgetUrl: string;
 
   /**
-   * Use the global window.auiEmbeddedWidgets library instead of the built-in one.
-   * This is convenient in case you wish to use a newer library version
-   * but cannot upgrade this wrapper due to angular version dependencies.
+   * Use the global window.auiEmbeddedWidgets library
+   * instead of the one from the app's node_modules.
    */
   @Input()
   useGlobalLibrary: boolean;

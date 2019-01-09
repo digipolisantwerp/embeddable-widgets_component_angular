@@ -3,6 +3,7 @@
   "lib": {
     "entryFile": "src/index.ts",
     "umdModuleIds": {
+      "@acpaas-ui/embeddable-widgets": "auiEmbeddableWidgets"
     }
   },
   "whitelistedNonPeerDependencies": []

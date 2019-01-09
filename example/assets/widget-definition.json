@@ -1,4 +1,19 @@
 {
   "tag": "aui-embed-example-widget",
-  "url": "/widget"
+  "url": "/widget",
+  "autoResize": {
+    "height": true,
+    "element": ".widget"
+  },
+  "props": {
+    "subject": {
+      "type": "string",
+      "required": false,
+      "defaultValue": "Antwerp"
+    },
+    "onClick": {
+      "type": "function",
+      "required": false
+    }
+  }
 }

@@ -1,11 +1,16 @@
 import * as builtinLibrary from '@acpaas-ui/embeddable-widgets';
 
+declare global {
+  interface Window { xprops: any; }
+}
+
 /**
  * Decorator to put on components that represent the primary view of an embeddable widget.
  * Ensures that the widget is initialized in the page, and will trigger the auiOnWidgetInit method
- * when the widget is ready.
+ * when the widget is ready passing it the properties received from the container.
  * @param widgetUrl The URL for the widget's definition.
- * @param useGlobalLibrary Whether to use the global window.auiEmbeddedWidgets instead of the built-in
+ * @param useGlobalLibrary Whether to use the global window.auiEmbeddedWidgets library
+ *                         instead of the one from the app's node_modules.
  */
 export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
   ( widgetUrl: string, useGlobalLibrary: boolean = false ): any {
@@ -30,7 +35,7 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
       if (!initialized) {
         if (instance && instance.auiOnWidgetInit) {
           initialized = true;
-          instance.auiOnWidgetInit();
+          instance.auiOnWidgetInit(window.xprops);
         }
       }
     };

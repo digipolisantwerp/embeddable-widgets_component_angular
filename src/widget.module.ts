@@ -16,3 +16,5 @@ import { EmbeddableWidgetComponent } from './widget/widget.component';
   providers: [],
 })
 export class EmbeddableWidgetsModule { }
+
+export * from './widget.decorator';
