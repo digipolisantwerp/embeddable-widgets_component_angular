@@ -37,8 +37,6 @@ Commands:
 
   `> npm start`
 
-  To use the remote page you also need to start the [backing service](http://example.com/TODO).
-
 - Run the tests (continously)
 
   `> npm run test-watch`
