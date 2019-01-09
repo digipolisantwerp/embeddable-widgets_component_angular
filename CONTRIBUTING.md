@@ -4,7 +4,7 @@ First off, thanks for taking the time to contribute! :+1:
 
 ## I just have a question
 
-You can launch a quick question on the [#acpaas-ui slack channel](https://dgpls.slack.com/messages/C4M60PQJF).
+You can launch a quick question on the [#acpaas-ui-ngx slack channel](https://digantcafe.slack.com/messages/CDF95H5B7). If you're not yet a member of our DigAnt Café slack community, you can easily [join here](https://digantcafe-slack.digipolis.be/).
 
 For something that requires longer discussion it may be better to book an issue.
 
@@ -14,20 +14,17 @@ Please book a GitHub issue.
 
 ## What should I know to get started?
 
-This widget is part of the [ACPaaS UI platform](https://acpaas-ui.digipolis.be). For more info about Smart Widgets, check the [documentation hub](https://github.com/digipolisantwerp/smart-widgets).
+This component is part of the [ACPaaS UI platform](https://acpaas-ui.digipolis.be).
 
 Before contributing code, you should be aware of the following:
 
-- The look and feel should match the [Antwerp Core Branding guidelines](https://github.com/a-ui/core_branding_scss).
-- The architecture consists of a separate front-end and back-end package. The back-end is a so-called Backend-For-Frontend (BFF). The architecture should conform to the [SA2020 guidelines](https://goo.gl/izTzSH).
-- There may be multiple independent front-ends and back-ends for the different technologies that Digipolis supports. All of these should implement the same BFF API. The set of supported technologies is described in the [DAAS standard](https://docs.google.com/spreadsheets/d/e/2PACX-1vR9N3gAJoJFIlaXnpAfSpog85EN1DXJYy5bWHgZ4XKhy8KN1v6xgT4-eaoTTBTEzhIpMGqd_Q11RuKF/pubhtml).
 - All code should conform to the [Angular style guide](https://angular.io/guide/styleguide), as well as the [ACPaaS UI guidelines](https://acpaas-ui.digipolis.be/docs/guidelines).
 
 ## How can I contribute code?
 
 ### Code layout
 
-- `./src` contains the widget source
+- `./src` contains the component and decorator source
 - `./example` contains the demo app
 
 ### Building and Testing
@@ -73,7 +70,7 @@ If possible, do provide meaningful and clean commit messages. A [good commit mes
 > Only the ACPaaS UI team publishes new packages. [Contact us](https://acpaas-ui.digipolis.be/contact) if you need a new release published.
 
 Follow these steps to publish a new version of the package.
-You must be a member of the @acpaas-ui-widgets organization on GitHub.
+You must be a member of the @acpaas-ui organization on NPM.
 
 1. Increment the version in package.json
 2. Log in to the npmjs registry

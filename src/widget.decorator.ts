@@ -9,7 +9,7 @@ declare global {
  * Ensures that the widget is initialized in the page, and will trigger the auiOnWidgetInit method
  * when the widget is ready passing it the properties received from the container.
  * @param widgetUrl The URL for the widget's definition.
- * @param useGlobalLibrary Whether to use the global window.auiEmbeddedWidgets library
+ * @param useGlobalLibrary Whether to use the global window.auiEmbeddableWidgets library
  *                         instead of the one from the app's node_modules.
  */
 export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
@@ -20,8 +20,8 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
   // https://stackoverflow.com/a/50466441/20980
 
   const getLibrary: any = () => {
-    if (useGlobalLibrary && window['auiEmbeddedWidgets']) {
-      return window['auiEmbeddedWidgets'];
+    if (useGlobalLibrary && window['auiEmbeddableWidgets']) {
+      return window['auiEmbeddableWidgets'];
     } else {
       return builtinLibrary;
     }

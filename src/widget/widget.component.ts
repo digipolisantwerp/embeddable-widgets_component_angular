@@ -14,7 +14,7 @@ export class EmbeddableWidgetComponent implements AfterViewInit {
   widgetUrl: string;
 
   /**
-   * Use the global window.auiEmbeddedWidgets library
+   * Use the global window.auiEmbeddableWidgets library
    * instead of the one from the app's node_modules.
    */
   @Input()
@@ -37,8 +37,8 @@ export class EmbeddableWidgetComponent implements AfterViewInit {
   }
 
   private getLibrary(): any {
-    if (this.useGlobalLibrary && window['auiEmbeddedWidgets']) {
-      return window['auiEmbeddedWidgets'];
+    if (this.useGlobalLibrary && window['auiEmbeddableWidgets']) {
+      return window['auiEmbeddableWidgets'];
     } else {
       return builtinLibrary;
     }

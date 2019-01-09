@@ -1,45 +1,97 @@
-# Smart Widget UI Starter Kit (Angular)
+# Embeddable Widgets Component (Angular)
 
-Dit is een starter kit om een Angular 6+ front-end te bouwen voor een ACPaaS UI Smart Widget. Om meer te leren over Smart Widgets en de richtlijnen te weten om deze starter kit te gebruiken kijk dan naar de [Smart Widget index pagina](https://github.com/digipolisantwerp/smart-widgets).
+This is an Angular component and decorator that wraps the [ACPaaS UI Embeddable Widgets framework](https://example.com/TODO).
 
-> Deze starter kit is bedoeld voor de `@acpaas-ui/ngx-components` componenten. Op de `acpaas-ui-classic` branch vind je de oude starter kit voor [ACPaaS UI Classic](https://acpaas-ui.digipolis.be/docs/angular-migrating).
+For more information on what embeddable widgets are see the link above.
 
-Om een nieuwe widget front-end te maken:
+There is a demo app, see below for instructions on running it.
 
-1. Kloon deze repo.
+## How to use
 
-   `git clone https://github.com/digipolisantwerp/starter-kit_widget_angular.git`
+### Installing
 
-2. Implementeer je widget in de `src` map.
+```sh
+> npm install @acpaas-ui/embeddable-widgets @acpaas-ui/ngx-embeddable-widgets
+```
 
-3. Implementeer een voorbeeld van het gebruik van je widget in de `example` map.
+### Embedding a widget
 
-   - Als jouw widget gebruikt kan worden met en zonder een BFF, gelieve dan een voorbeeld van elk te geven.
+Import the component in your module:
 
-4. Schrijf enkele tests voor jouw widget door `.spec.ts files` toe te voegen aan de `src` map.
+```ts
+import { EmbeddableWidgetsModule } from '@acpaas-ui/ngx-embeddable-widgets';
 
-   - Test eenmalig met `npm test`, en met `npm run test-watch` in *watch* modus.
+@NgModule({
+  imports: [
+    ...,
+    EmbeddableWidgetsModule
+  ],
+  ...
+})
+```
 
-5. Pas alle relevante bestanden aan om de referenties naar `starter-kit`, `Starter Kit` en `example` te vervangen.
+In your template:
 
-   - `package.json`: ACPaaS UI componenten waarvan je afhankelijk bent horen in `dependencies` te gaan
-   - `angular.json`
-   - Andere bestanden met bovenstaande termen...
-   - Verwijder `package-lock.json` en draai `npm install` om het opnieuw te genereren.
+```html
+<aui-embeddable-widget 
+  widgetUrl="//example.com/widget/definition.json"
+  [props]="{ someProp: 'value' }">
+</aui-embeddable-widget>
+```
 
-6. Plaats geschikte README.md en CONTRIBUTING.md bestanden.
+Supported attributes:
 
-   - Vervang `README.md` door `README.example.md` en pas het aan.
-   - Hernoem `CONTRIBUTING.example.md` naar `CONTRIBUTING.md` en pas het aan.
+- widgetUrl: the URL of the widget's JSON definition (required)
+- props: the props to pass to the embedded widget
+- overrides: overrides to specify when the widget definition is loaded (only applied once per loaded tag)
+- useGlobalLibrary: if true, uses window.auiEmbeddableWidgets instead of @acpaas-ui/embeddable-widgets
 
-7. Push jouw widget naar een nieuwe repo op GitHub.
+There are no events, since all event handlers are specified in props. To understand how to do this, look at the `onClick` event inside the `example` folder.
 
-8. Volg de instructies uit de [Smart Widgets contributing pagina](https://github.com/digipolisantwerp/starter-kit_widget_angular/blob/master/CONTRIBUTING.md) om Digipolis op de hoogte te stellen van jouw widget en die te publiceren.
+### Publishing a widget
 
-## Bijdragen aan deze starter kit
+Create a page in your angular app that contains the widget.
 
-Wens je wijzigingen te maken aan deze starter kit, kom dan even langs op het [#acpaas-ui-ngx slack channel](https://acpaas-ui.digipolis.be/contact) of maak een github issue.
+Publish a JSON definition for your widget. For example, you can include a file `widget-definition.json` in the assets folder. See `example/assets/widget-definition.json` for an example.
 
-## Licentie
+Decorate the page's component:
 
-Dit project is gepubliceerd onder de [MIT licentie](LICENSE.md).
+```ts
+import { EmbeddableWidget } from '@acpaas-ui/ngx-embeddable-widgets';
+
+@Component({
+  selector: 'app-widget',
+  templateUrl: './widget.page.html'
+})
+@EmbeddableWidget('/assets/widget-definition.json')
+export class WidgetPage {
+// ...
+
+  public auiOnWidgetInit(props) {
+    // initialize from props here
+  }
+```
+
+This will do the following:
+
+- Initialize the current page as the widget defined in the JSON.
+- Call the `auiOnWidgetInit` method and pass it the `props` specified from the container app.
+
+## Run the demo app
+
+```sh
+> npm install
+> npm start
+```
+
+Browse to [localhost:4200](http://localhost:4200)
+
+## Contributing
+
+We welcome your bug reports and pull requests.
+
+Please see our [contribution guide](CONTRIBUTING.md).
+
+## License
+
+This project is published under the [MIT license](LICENSE.md).
