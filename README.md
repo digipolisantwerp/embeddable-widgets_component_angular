@@ -1,6 +1,6 @@
 # Embeddable Widgets Component (Angular)
 
-This is an Angular component and decorator that wraps the [ACPaaS UI Embeddable Widgets framework](https://example.com/TODO).
+This is an Angular component and decorator that wraps the [ACPaaS UI Embeddable Widgets framework](https://github.com/digipolisantwerp/embeddable-widgets_component_angular).
 
 For more information on what embeddable widgets are see the link above.
 
