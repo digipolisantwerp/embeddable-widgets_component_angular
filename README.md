@@ -33,7 +33,7 @@ import { EmbeddableWidgetsModule } from '@acpaas-ui/ngx-embeddable-widgets';
 In your template:
 
 ```html
-<aui-embeddable-widget 
+<aui-embeddable-widget
   widgetUrl="//example.com/widget/definition.json"
   [props]="{ someProp: 'value' }">
 </aui-embeddable-widget>
