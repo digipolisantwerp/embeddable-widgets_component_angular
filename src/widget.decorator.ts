@@ -27,7 +27,7 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
     }
   };
 
-  return function ( constructor: T ) {
+  return function ( target: T ) {
     let instance = null;
     let initialized = false;
 
@@ -40,13 +40,15 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
       }
     };
 
-    const newConstructor = function ( ...args ) {
-      instance = this;
-      getLibrary().load(widgetUrl).then(doInit);
-      return constructor.apply(this, args);
+    // create a mixin class for the original class
+    // see https://mariusschulz.com/blog/typescript-2-2-mixin-classes#mixins-with-a-constructor
+    return class extends target {
+      constructor(...args: any[]) {
+        super(...args);
+        instance = this;
+        getLibrary().load(widgetUrl).then(doInit);
+      }
     };
-    newConstructor.prototype = constructor.prototype;
-    return newConstructor;
   };
 
 }
