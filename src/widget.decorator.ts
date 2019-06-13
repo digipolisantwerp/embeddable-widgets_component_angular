@@ -1,4 +1,5 @@
 import * as builtinLibrary from '@acpaas-ui/embeddable-widgets';
+import 'reflect-metadata';
 
 declare global {
   interface Window { xprops: any; }
@@ -40,15 +41,36 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
       }
     };
 
+    const getParamTypesAndParameters = () => {
+      const paramTypes = Reflect.getMetadata('design:paramtypes', target);
+      const rawParameters = Reflect.getMetadata('parameters', target);
+      const parameters = Array(paramTypes.length).fill(null);
+      if (rawParameters) {
+          rawParameters.slice(0, paramTypes.length).forEach((el, i) => {
+              parameters[i] = el;
+          });
+      }
+      return [paramTypes, parameters];
+    };
+
     // create a mixin class for the original class
     // see https://mariusschulz.com/blog/typescript-2-2-mixin-classes#mixins-with-a-constructor
-    return class extends target {
+    const Widget = class extends target {
       constructor(...args: any[]) {
         super(...args);
         instance = this;
         getLibrary().load(widgetUrl).then(doInit);
       }
     };
+
+    // add metadata so angular can figure out how to inject dependencies
+    // adapted from https://medium.com/@artsiomkuts/typescript-mixins-with-angular2-di-671a9b159d47
+    const [parentParamTypes, parentParameters] = getParamTypesAndParameters();
+    Reflect.defineMetadata('design:paramtypes', parentParamTypes, Widget);
+    Reflect.defineMetadata('parameters', parentParameters, Widget);
+    Reflect.defineMetadata('parentParameters', parentParameters, Widget);
+
+    return Widget;
   };
 
 }
