@@ -42,7 +42,7 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
     };
 
     const getParamTypesAndParameters = () => {
-      const paramTypes = Reflect.getMetadata('design:paramtypes', target);
+      const paramTypes = Reflect.getMetadata('design:paramtypes', target) || [];
       const rawParameters = Reflect.getMetadata('parameters', target);
       const parameters = Array(paramTypes.length).fill(null);
       if (rawParameters) {
