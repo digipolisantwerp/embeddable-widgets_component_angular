@@ -6,5 +6,5 @@
       "@acpaas-ui/embeddable-widgets": "auiEmbeddableWidgets"
     }
   },
-  "whitelistedNonPeerDependencies": []
+  "whitelistedNonPeerDependencies": ["@acpaas-ui/embeddable-widgets"]
 }
