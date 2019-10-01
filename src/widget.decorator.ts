@@ -1,4 +1,5 @@
-import * as builtinLibrary from '@acpaas-ui/embeddable-widgets';
+import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
+import * as builtinLibraryV1 from '@acpaas-ui/embeddable-widgets-v1';
 import 'reflect-metadata';
 
 declare global {
@@ -24,7 +25,14 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
     if (useGlobalLibrary && window['auiEmbeddableWidgets']) {
       return window['auiEmbeddableWidgets'];
     } else {
-      return builtinLibrary;
+      const urlParams = new URLSearchParams(window.location.search);
+      console.log(window.location.search);
+      const version = urlParams.get('_aui_api_version');
+      if (version === '1') {
+        return builtinLibraryV1;
+      } else {
+        return builtinLibraryV2;
+      }
     }
   };
 

@@ -1,5 +1,6 @@
 import { Component, Input, ElementRef, AfterViewInit, NgZone, ChangeDetectorRef } from '@angular/core';
-import * as builtinLibrary from '@acpaas-ui/embeddable-widgets';
+import * as builtinLibraryV1 from '@acpaas-ui/embeddable-widgets-v1';
+import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
 
 @Component({
   selector: 'aui-embeddable-widget',
@@ -19,6 +20,13 @@ export class EmbeddableWidgetComponent implements AfterViewInit {
    */
   @Input()
   useGlobalLibrary: boolean;
+
+  /**
+   * Which major release of the embeddable-widgets library to use.
+   * Defaults to "2", but "1" can be passed when embedding a v1.0.x widget.
+   */
+  @Input()
+  useLibraryVersion = '2';
 
   /** Overrides applied at definition time (once for all widgets of that url) */
   @Input()
@@ -64,7 +72,11 @@ export class EmbeddableWidgetComponent implements AfterViewInit {
     if (this.useGlobalLibrary && window['auiEmbeddableWidgets']) {
       return window['auiEmbeddableWidgets'];
     } else {
-      return builtinLibrary;
+      if (this.useLibraryVersion === '1') {
+        return builtinLibraryV1;
+      } else {
+        return builtinLibraryV2;
+      }
     }
   }
 

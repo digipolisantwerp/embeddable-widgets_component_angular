@@ -35,12 +35,12 @@
     "@angular/common": "^6.0.0",
     "@angular/core": "^6.0.0",
     "@angular/forms": "^6.0.0",
-    "@acpaas-ui/embeddable-widgets": "^1.0.0"
+    "@acpaas-ui/embeddable-widgets": "^1.0.0|^2.0.0"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@acpaas-ui/embeddable-widgets": "^1.0.0",
-    "@angular-devkit/build-angular": "~0.8.9",
+    "@acpaas-ui/embeddable-widgets": "^2.0.0",
+    "@acpaas-ui/embeddable-widgets-v1": "npm:@acpaas-ui/embeddable-widgets@^1.0.7",
+    "@angular-devkit/build-angular": "^0.10.0",
     "@angular/animations": "6.1.9",
     "@angular/cli": "^6.2.3",
     "@angular/common": "6.1.9",
