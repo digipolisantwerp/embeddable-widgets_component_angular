@@ -26,7 +26,6 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
       return window['auiEmbeddableWidgets'];
     } else {
       const urlParams = new URLSearchParams(window.location.search);
-      console.log(window.location.search);
       const version = urlParams.get('_aui_api_version');
       if (version === '1') {
         return builtinLibraryV1;
