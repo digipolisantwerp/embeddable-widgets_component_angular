@@ -36,6 +36,9 @@
     "@angular/core": "^6.0.0",
     "@angular/forms": "^6.0.0"
   },
+  "bundledDependencies": [
+    "@acpaas-ui/embeddable-widgets-v1"
+  ],
   "dependencies": {
     "@acpaas-ui/embeddable-widgets": "^2.0.0",
     "@acpaas-ui/embeddable-widgets-v1": "npm:@acpaas-ui/embeddable-widgets@^1.0.7"

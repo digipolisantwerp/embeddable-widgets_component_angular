@@ -89,6 +89,10 @@ Browse to [localhost:4200](http://localhost:4200)
 
 ## Changes
 
+### 1.1.1
+
+- fix build error (cannot resolve module) in downstream apps
+
 ### 1.1.0
 
 - add support for @acpaas-ui/embeddable-widgets v2.x
