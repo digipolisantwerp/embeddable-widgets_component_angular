@@ -12,7 +12,7 @@
     "start": "ng serve --aot",
     "build": "npm run clean && ng-packagr -p ng-package.json",
     "clean": "rimraf coverage",
-    "test": "npm run lint && ng test --watch false --code-coverage",
+    "test": "ng test --watch=false --code-coverage",
     "test-watch": "ng test --code-coverage",
     "e2e": "ng e2e",
     "e2e-watch": "watch \"ng e2e -s false\" src e2e --wait=1",
