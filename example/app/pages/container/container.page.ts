@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-container',
@@ -16,5 +16,9 @@ export class ContainerPage {
 
   public onButtonClicked() {
     this.clicks++;
+  }
+
+  onLoad(error?) {
+    console.log(`Widget loaded ${error ? 'with' : 'without'} error!`);
   }
 }

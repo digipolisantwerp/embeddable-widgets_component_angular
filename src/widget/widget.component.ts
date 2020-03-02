@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, AfterViewInit, NgZone, ChangeDetectorRef } from '@angular/core';
+import {Component, Input, ElementRef, AfterViewInit, NgZone, ChangeDetectorRef, Output, EventEmitter, OnInit} from '@angular/core';
 import * as builtinLibraryV1 from '@acpaas-ui/embeddable-widgets-v1';
 import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
 
@@ -7,7 +7,7 @@ import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
   styleUrls: ['./widget.component.scss'],
   template: ''
 })
-export class EmbeddableWidgetComponent implements AfterViewInit {
+export class EmbeddableWidgetComponent implements OnInit, AfterViewInit {
   componentName: 'EmbeddableWidget';
 
   /** The URL of the widget's definition */
@@ -36,10 +36,19 @@ export class EmbeddableWidgetComponent implements AfterViewInit {
   @Input()
   props: any;
 
+  @Output()
+  loaded = new EventEmitter<void | Error>();
+
   constructor(
     private hostRef: ElementRef,
     private zone: NgZone,
-    private cd: ChangeDetectorRef) { }
+    private cd: ChangeDetectorRef) {
+  }
+
+  ngOnInit(): void {
+    // Detach the change detection, since we won't need it by default
+    this.cd.detach();
+  }
 
   ngAfterViewInit(): void {
     // zoid's setInterval causes angular to call detectChanges often on the whole component tree
@@ -54,7 +63,18 @@ export class EmbeddableWidgetComponent implements AfterViewInit {
       return this.getLibrary().renderUrl(
         this.widgetUrl, zonedProps, this.hostRef.nativeElement, this.overrides
       );
-    }).catch((err) => console.error(err));
+    })
+      .then(() => {
+        this.loaded.next();
+      })
+      .catch(err => {
+        this.loaded.next(err);
+        console.error(err);
+      })
+      .finally(() => {
+        // Run change detection of this component only once,
+        this.cd.detectChanges();
+      });
   }
 
   private zonify(prop) {
