@@ -1,9 +1,12 @@
+import 'reflect-metadata';
 import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
 import * as builtinLibraryV1 from '@acpaas-ui/embeddable-widgets-v1';
-import 'reflect-metadata';
+import {IWidget} from '../../../../frontend/src/app/pages/widgets/widgets';
 
 declare global {
-  interface Window { xprops: any; }
+  interface Window {
+    xprops: any;
+  }
 }
 
 /**
@@ -14,8 +17,8 @@ declare global {
  * @param useGlobalLibrary Whether to use the global window.auiEmbeddableWidgets library
  *                         instead of the one from the app's node_modules.
  */
-export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
-  ( widgetUrl: string, useGlobalLibrary: boolean = false ): any {
+export function EmbeddableWidget<K, T extends { new(...args: any[]): IWidget<K> }>
+(widgetUrl: string, useGlobalLibrary: boolean = false): any {
 
   // implementation derived from:
   // https://netbasal.com/inspiration-for-custom-decorators-in-angular-95aeb87f072c
@@ -35,7 +38,7 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
     }
   };
 
-  return function ( target: T ) {
+  return function (target: T) {
     let instance = null;
     let initialized = false;
 
@@ -53,9 +56,9 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
       const rawParameters = Reflect.getMetadata('parameters', target);
       const parameters = Array(paramTypes.length).fill(null);
       if (rawParameters) {
-          rawParameters.slice(0, paramTypes.length).forEach((el, i) => {
-              parameters[i] = el;
-          });
+        rawParameters.slice(0, paramTypes.length).forEach((el, i) => {
+          parameters[i] = el;
+        });
       }
       return [paramTypes, parameters];
     };
