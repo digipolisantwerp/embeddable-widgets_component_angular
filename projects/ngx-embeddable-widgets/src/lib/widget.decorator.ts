@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
 import * as builtinLibraryV1 from '@acpaas-ui/embeddable-widgets-v1';
-import {IWidget} from '../../../../frontend/src/app/pages/widgets/widgets';
 
 declare global {
   interface Window {
@@ -17,7 +16,7 @@ declare global {
  * @param useGlobalLibrary Whether to use the global window.auiEmbeddableWidgets library
  *                         instead of the one from the app's node_modules.
  */
-export function EmbeddableWidget<K, T extends { new(...args: any[]): IWidget<K> }>
+export function EmbeddableWidget<K, T extends { new(...args: any[]): object }>
 (widgetUrl: string, useGlobalLibrary: boolean = false): any {
 
   // implementation derived from:

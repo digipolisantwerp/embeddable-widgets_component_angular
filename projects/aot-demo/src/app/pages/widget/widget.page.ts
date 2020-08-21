@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { EmbeddableWidget } from '../../../../src/widget.decorator';
+import { EmbeddableWidget } from '../../../../../ngx-embeddable-widgets/src/lib/widget.decorator';
 
 @Component({
   selector: 'app-widget',

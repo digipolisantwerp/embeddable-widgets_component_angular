@@ -3,44 +3,73 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "embeddable-widgets_component_angular": {
-      "root": "",
-      "sourceRoot": "example",
+    "ngx-embeddable-widgets": {
+      "root": "projects/ngx-embeddable-widgets",
+      "sourceRoot": "projects/ngx-embeddable-widgets/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-embeddable-widgets/tsconfig.lib.json",
+            "project": "projects/ngx-embeddable-widgets/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-embeddable-widgets/src/test.ts",
+            "tsConfig": "projects/ngx-embeddable-widgets/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-embeddable-widgets/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-embeddable-widgets/tsconfig.lib.json",
+              "projects/ngx-embeddable-widgets/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "aot-demo": {
+      "root": "projects/aot-demo/",
+      "sourceRoot": "projects/aot-demo/src",
       "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "preserveSymlinks": true,
-            "outputPath": "dist",
-            "index": "example/index.html",
-            "main": "example/main.ts",
-            "tsConfig": "example/tsconfig.app.json",
-            "polyfills": "example/polyfills.ts",
+            "outputPath": "dist/aot-demo",
+            "index": "projects/aot-demo/src/index.html",
+            "main": "projects/aot-demo/src/main.ts",
+            "polyfills": "projects/aot-demo/src/polyfills.ts",
+            "tsConfig": "projects/aot-demo/tsconfig.app.json",
             "assets": [
-              "example/assets",
-              "example/favicon.ico",
-              {
-                "glob": "**/*",
-                "input": "./node_modules/@acpaas-ui/embeddable-widgets/lib/",
-                "output": "./assets/lib"
-              }
+              "projects/aot-demo/src/favicon.ico",
+              "projects/aot-demo/src/assets"
             ],
             "styles": [
-              "example/styles.scss"
+              "projects/aot-demo/src/styles.css"
             ],
             "scripts": []
           },
           "configurations": {
-            "prod": {
+            "production": {
               "fileReplacements": [
                 {
-                  "replace": "example/config/environment.ts",
-                  "with": "example/config/environment.prod.ts"
+                  "replace": "projects/aot-demo/src/environments/environment.ts",
+                  "with": "projects/aot-demo/src/environments/environment.prod.ts"
                 }
-              ]
-            },
-            "production": {
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -56,37 +85,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "embeddable-widgets_component_angular:build"
+            "browserTarget": "aot-demo:build"
           },
           "configurations": {
-            "prod": {
-              "browserTarget": "embeddable-widgets_component_angular:build:prod"
-            },
             "production": {
-              "browserTarget": "embeddable-widgets_component_angular:build:production"
+              "browserTarget": "aot-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "embeddable-widgets_component_angular:build"
+            "browserTarget": "aot-demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "example/test.ts",
-            "karmaConfig": "./karma.conf.js",
-            "polyfills": "example/polyfills.ts",
-            "tsConfig": "example/tsconfig.spec.json",
-            "scripts": [],
+            "main": "projects/aot-demo/src/test.ts",
+            "polyfills": "projects/aot-demo/src/polyfills.ts",
+            "tsConfig": "projects/aot-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/aot-demo/karma.conf.js",
             "styles": [
-              "example/styles.scss"
+              "projects/aot-demo/src/styles.css"
             ],
+            "scripts": [],
             "assets": [
-              "example/assets",
-              "example/favicon.ico"
+              "projects/aot-demo/src/favicon.ico",
+              "projects/aot-demo/src/assets"
             ]
           }
         },
@@ -94,32 +120,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "example/tsconfig.app.json",
-              "example/tsconfig.spec.json"
+              "projects/aot-demo/tsconfig.app.json",
+              "projects/aot-demo/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "embeddable-widgets_component_angular-e2e": {
-      "root": "e2e",
-      "sourceRoot": "e2e",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "embeddable-widgets_component_angular:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -128,7 +131,7 @@
       }
     }
   },
-  "defaultProject": "embeddable-widgets_component_angular",
+  "defaultProject": "aot-demo",
   "schematics": {
     "@schematics/angular:class": {
       "spec": false

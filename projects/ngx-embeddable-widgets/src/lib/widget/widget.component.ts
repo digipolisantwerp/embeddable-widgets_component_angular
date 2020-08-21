@@ -57,7 +57,7 @@ export class EmbeddableWidgetComponent implements OnInit, AfterViewInit {
       // instead we wrap all the event handlers from props so they are run inside the zone
       // which causes detectChanges to be called only after an event handler is run
       const zonedProps = {};
-      Object.entries(this.props).forEach(([key, prop]) => {
+      (Object as any).entries(this.props).forEach(([key, prop]) => {
         zonedProps[key] = this.zonify(prop);
       });
       return this.getLibrary().renderUrl(

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContainerPage } from './pages/container';
-import { WidgetPage } from './pages/widget';
+import { ContainerPage } from './pages/container/index';
+import { WidgetPage } from './pages/widget/index';
 import { NoContentPage } from './pages/no-content.page';
 
 export const ROUTES: Routes = [

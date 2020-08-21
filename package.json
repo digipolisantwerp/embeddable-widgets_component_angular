@@ -7,9 +7,10 @@
   },
   "version": "1.1.2",
   "license": "MIT",
-  "main": "src/index.ts",
+  "main": "projects/ngx-embeddable-widgets/src/lib/index.ts",
   "scripts": {
     "start": "ng serve --aot",
+    "ng": "ng",
     "build": "npm run clean && ng-packagr -p ng-package.json",
     "clean": "rimraf coverage",
     "test": "ng test --watch=false --code-coverage",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",
+    "@angular-devkit/build-ng-packagr": "~0.8.0",
     "@angular/animations": "6.1.9",
     "@angular/cli": "^6.2.3",
     "@angular/common": "6.1.9",
@@ -76,6 +78,7 @@
     "rxjs-compat": "^6.3.3",
     "ts-node": "~7.0.0",
     "tsickle": "~0.32.1",
+    "tslib": "^1.9.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2",
     "watch": "^1.0.2",

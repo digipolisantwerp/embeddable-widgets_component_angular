@@ -16,6 +16,14 @@
       "dom"
     ],
     "module": "es2015",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "ngx-embeddable-widgets": [
+        "dist/ngx-embeddable-widgets"
+      ],
+      "ngx-embeddable-widgets/*": [
+        "dist/ngx-embeddable-widgets/*"
+      ]
+    }
   }
 }
