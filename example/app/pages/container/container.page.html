@@ -4,8 +4,9 @@
 <div class="u-container">
 
     <aui-embeddable-widget
+        *ngIf="(props$ | async)"
         widgetUrl="/assets/widget-definition.json"
-        [props]="{ subject: 'World', onClick: onButtonClicked }"
+        [props]="(props$ | async)"
         (loaded)="onLoad($event)"
         class="u-bg-light">
     </aui-embeddable-widget>
@@ -18,5 +19,10 @@
         Received {{ clicks }}
         <span *ngIf="clicks === 1">click</span>
         <span *ngIf="clicks > 1">clicks</span>
+    </p>
+
+    <p>
+        <label>Text: </label>
+        <input type="text" [value]="(text$ | async)" (keyup)="onTextChange($event)" (change)="onTextChange($event)" />
     </p>
 </div>
