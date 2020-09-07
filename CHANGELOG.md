@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+-
+
+## 1.1.3 - 7-9-2020
+
 - Widget rerenders when props input changes
 
 ## 1.1.2 - 2-03-2020
