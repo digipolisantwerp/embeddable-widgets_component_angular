@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { EmbeddableWidgetsModule } from '../../src';
 
@@ -12,6 +13,7 @@ import { Pages } from './pages';
     BrowserModule,
     EmbeddableWidgetsModule,
     AppRoutingModule,
+    FormsModule,
   ],
   declarations: [
     AppComponent,
