@@ -93,6 +93,10 @@ We welcome your bug reports and pull requests.
 
 Please see our [contribution guide](CONTRIBUTING.md).
 
+## Support
+
+Joeri Sebrechts (<joeri.sebrechts@digipolis.be>)
+
 ## License
 
 This project is published under the [MIT license](LICENSE.md).
