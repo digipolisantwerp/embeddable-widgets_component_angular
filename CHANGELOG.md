@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-## 2.0.0 - 2021-03-03
+## 2.0.1 - 2021-03-03
 
 - **BREAKING**: widgets built with `@acpaas-ui/embeddable-widgets` v1.x are no longer supported
 - supports server-side rendering with Angular Universal
