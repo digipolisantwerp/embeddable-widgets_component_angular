@@ -1,10 +1,11 @@
 import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
-import * as builtinLibraryV1 from '@acpaas-ui/embeddable-widgets-v1';
 import 'reflect-metadata';
 
 declare global {
   interface Window { xprops: any; }
 }
+
+const windowExists = typeof window !== 'undefined';
 
 /**
  * Decorator to put on components that represent the primary view of an embeddable widget.
@@ -22,13 +23,13 @@ export function EmbeddableWidget<T extends { new(...args: any[]): {} }>
   // https://stackoverflow.com/a/50466441/20980
 
   const getLibrary: any = () => {
-    if (useGlobalLibrary && window['auiEmbeddableWidgets']) {
+    if (useGlobalLibrary && windowExists && window['auiEmbeddableWidgets']) {
       return window['auiEmbeddableWidgets'];
     } else {
-      const urlParams = new URLSearchParams(window.location.search);
+      const urlParams = new URLSearchParams(windowExists && window.location && window.location.search);
       const version = urlParams.get('_aui_api_version');
       if (version === '1') {
-        return builtinLibraryV1;
+        throw new Error("embeddable-widgets v1 is not supported by ngx-embeddable-widgets");
       } else {
         return builtinLibraryV2;
       }
