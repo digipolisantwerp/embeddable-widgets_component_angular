@@ -45,7 +45,6 @@ Supported attributes:
 - props: the props to pass to the embedded widget
 - overrides: overrides to specify when the widget definition is loaded (only applied once per loaded tag)
 - useGlobalLibrary: if true, uses window.auiEmbeddableWidgets instead of @acpaas-ui/embeddable-widgets
-- useLibraryVersion: specify "1" to revert to `@acpaas-ui/embeddable-widgets` v1.0.x, otherwise it will use v2.0.x. The containing app and widget page must be using the same major release of this library.
 
 There are no events, since all event handlers are specified in props. To understand how to do this, look at the `onClick` event inside the `example` folder.
 
@@ -86,6 +85,20 @@ This will do the following:
 ```
 
 Browse to [localhost:4200](http://localhost:4200)
+
+## Angular Universal
+
+The `<aui-embeddable-widget>` component can be rendered with server-side rendering in Angular Universal.
+
+1. Include the following code in `server.ts` of your Universal app
+
+    ```ts
+    if (typeof window === 'undefined') {
+      global['window'] = {};
+    }
+    ```
+
+2. Use `<aui-embeddable-widget>` in the normal way
 
 ## Contributing
 

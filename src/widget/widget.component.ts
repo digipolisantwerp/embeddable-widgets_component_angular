@@ -11,11 +11,16 @@ import {
   ChangeDetectionStrategy,
   OnChanges,
   SimpleChanges,
-  OnDestroy} from '@angular/core';
-import * as builtinLibraryV1 from '@acpaas-ui/embeddable-widgets-v1';
+  OnDestroy,
+  PLATFORM_ID,
+  Inject} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+
+import { WindowRef } from '../helpers/windowRef.service';
 
 @Component({
   selector: 'aui-embeddable-widget',
@@ -39,7 +44,7 @@ export class EmbeddableWidgetComponent implements OnInit, OnDestroy, OnChanges, 
 
   /**
    * Which major release of the embeddable-widgets library to use.
-   * Defaults to "2", but "1" can be passed when embedding a v1.0.x widget.
+   * Defaults to "2", other values are currently ignored.
    */
   @Input()
   useLibraryVersion = '2';
@@ -64,7 +69,9 @@ export class EmbeddableWidgetComponent implements OnInit, OnDestroy, OnChanges, 
   constructor(
     private hostRef: ElementRef,
     private zone: NgZone,
-    private cd: ChangeDetectorRef) {
+    private cd: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: any,
+    private windowRef: WindowRef) {
   }
 
   ngOnInit(): void {
@@ -91,31 +98,34 @@ export class EmbeddableWidgetComponent implements OnInit, OnDestroy, OnChanges, 
   }
 
   private renderWidget() {
-    // zoid's setInterval causes angular to call detectChanges often on the whole component tree
-    // this is a bad thing for performance, so we prevent it from happening
-    this.zone.runOutsideAngular(() => {
-      if (this.widget) {
-        this.widget.close();
-        this.widget = null;
-      } else {
-        this.hostRef.nativeElement.innerHTML = '';
-      }
-      return this.getLibrary().renderUrl(
-        this.widgetUrl, this.zonifyAll(this.props), this.hostRef.nativeElement, this.overrides
-      );
-    })
-      .then((widget) => {
-        this.widget = widget;
-        this.loaded.next();
+    // only render in the browser, not on the server
+    if (isPlatformBrowser(this.platformId)) {
+      // zoid's setInterval causes angular to call detectChanges often on the whole component tree
+      // this is a bad thing for performance, so we prevent it from happening
+      this.zone.runOutsideAngular(() => {
+        if (this.widget) {
+          this.widget.close();
+          this.widget = null;
+        } else {
+          this.hostRef.nativeElement.innerHTML = '';
+        }
+        return this.getLibrary().renderUrl(
+          this.widgetUrl, this.zonifyAll(this.props), this.hostRef.nativeElement, this.overrides
+        );
       })
-      .catch(err => {
-        this.loaded.next(err);
-        console.error(err);
-      })
-      .finally(() => {
-        // Run change detection of this component only once,
-        this.cd.detectChanges();
-      });
+        .then((widget) => {
+          this.widget = widget;
+          this.loaded.next();
+        })
+        .catch(err => {
+          this.loaded.next(err);
+          console.error(err);
+        })
+        .finally(() => {
+          // Run change detection of this component only once,
+          this.cd.detectChanges();
+        });
+    }
   }
 
   private zonifyAll(props) {
@@ -140,15 +150,18 @@ export class EmbeddableWidgetComponent implements OnInit, OnDestroy, OnChanges, 
   }
 
   private getLibrary(): any {
-    if (this.useGlobalLibrary && window['auiEmbeddableWidgets']) {
-      return window['auiEmbeddableWidgets'];
-    } else {
-      if (this.useLibraryVersion === '1') {
-        return builtinLibraryV1;
+    if (this.useGlobalLibrary && isPlatformBrowser(this.platformId)) {
+      if (this.windowRef.nativeWindow['auiEmbeddableWidgets']) {
+        return this.windowRef.nativeWindow['auiEmbeddableWidgets'];
       } else {
-        return builtinLibraryV2;
+        console.log("warning: useGlobalLibrary specified, but not found on window. Falling back to built-in.");
       }
     }
+
+    if (this.useLibraryVersion === '1') {
+      console.log("warning: embeddable-widgets v1 no longer supported by ngx-embeddable-widgets, using v2 instead");
+    }
+    return builtinLibraryV2;
   }
 
 }

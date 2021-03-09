@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { EmbeddableWidgetComponent } from './widget/widget.component';
+import { WindowRef } from './helpers/windowRef.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { EmbeddableWidgetComponent } from './widget/widget.component';
   declarations: [
     EmbeddableWidgetComponent,
   ],
-  providers: [],
+  providers: [WindowRef],
 })
 export class EmbeddableWidgetsModule { }
 
