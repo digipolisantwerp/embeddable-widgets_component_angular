@@ -40,7 +40,7 @@
     "@acpaas-ui/embeddable-widgets": "^2.0.7"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.8.9",
+    "@angular-devkit/build-angular": "15.0.4",
     "@angular/animations": "6.1.9",
     "@angular/cli": "^6.2.3",
     "@angular/common": "6.1.9",
