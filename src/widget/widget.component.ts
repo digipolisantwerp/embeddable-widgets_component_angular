@@ -20,11 +20,11 @@ import * as builtinLibraryV2 from '@acpaas-ui/embeddable-widgets';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { WindowRef } from '../helpers/windowRef.service';
+import { WindowRef } from '../helpers/windowref.service';
 
 @Component({
   selector: 'aui-embeddable-widget',
-  styleUrls: ['./widget.component.scss'],
+  styles: [':host { display: block; position: relative; }'],
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
