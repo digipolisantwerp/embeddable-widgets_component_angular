@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, distinctUntilChanged, shareReplay } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-container',
@@ -15,7 +15,7 @@ export class ContainerPage implements OnInit {
   }
 
   public text$: BehaviorSubject<string>;
-  public textControl: FormControl = new FormControl();
+  public textControl: UntypedFormControl = new UntypedFormControl();
   public props$: Observable<any>;
 
   // the number of times the button is clicked inside the widget

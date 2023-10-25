@@ -118,7 +118,6 @@
       }
     }
   },
-  "defaultProject": "embeddable-widgets_component_angular",
   "schematics": {
     "@schematics/angular:class": {
       "skipTests": true
