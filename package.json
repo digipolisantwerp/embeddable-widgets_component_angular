@@ -9,7 +9,7 @@
   "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && ng serve --aot",
+    "start": "ng serve --aot",
     "build": "npm run clean && ng-packagr -p ng-package.json",
     "clean": "rimraf coverage",
     "test": "export NODE_OPTIONS=--openssl-legacy-provider && ng test --watch=false --code-coverage",
@@ -29,29 +29,25 @@
     "library",
     "embeddable-widgets"
   ],
-  "peerDependencies": {
-    "@angular/common": ">=8.0.0",
-    "@angular/core": ">=8.0.0",
-    "@angular/forms": ">=8.0.0"
-  },
   "dependencies": {
-    "@acpaas-ui/embeddable-widgets": "^2.0.7"
+    "@acpaas-ui/embeddable-widgets": "^2.0.7",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.803.29",
-    "@angular/animations": "^8.0.0",
-    "@angular/cli": "^8.0.0",
-    "@angular/common": "^8.0.0",
-    "@angular/compiler": "^8.0.0",
-    "@angular/compiler-cli": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "@angular/forms": "^8.0.0",
-    "@angular/language-service": "^8.0.0",
-    "@angular/platform-browser": "^8.0.0",
-    "@angular/platform-browser-dynamic": "^8.0.0",
-    "@angular/router": "^8.0.0",
+    "@angular-devkit/build-angular": "~0.901.15",
+    "@angular/animations": "^9.1.13",
+    "@angular/cli": "^9.1.15",
+    "@angular/common": "^9.1.13",
+    "@angular/compiler": "^9.1.13",
+    "@angular/compiler-cli": "^9.1.13",
+    "@angular/core": "^9.1.13",
+    "@angular/forms": "^9.1.13",
+    "@angular/language-service": "^9.1.13",
+    "@angular/platform-browser": "^9.1.13",
+    "@angular/platform-browser-dynamic": "^9.1.13",
+    "@angular/router": "^9.1.13",
     "@types/jasmine": "^4.3.1",
-    "codelyzer": "^6.0.0",
+    "codelyzer": "^5.1.2",
     "core-js": "^2.5.7",
     "jasmine-core": "^4.6.0",
     "jasmine-spec-reporter": "^7.0.0",
@@ -61,12 +57,12 @@
     "karma-coverage-istanbul-reporter": "^3.0.0",
     "karma-jasmine": "^5.0.0",
     "karma-jasmine-html-reporter": "^2.0.0",
-    "ng-packagr": "^5.7.1",
+    "ng-packagr": "^9.0.0",
     "rimraf": "^2.6.3",
     "rxjs": "^6.3.3",
     "ts-node": "^7.0.0",
     "tslint": "^5.11.0",
     "typescript": "^3.0.0",
-    "zone.js": "^0.9.1"
+    "zone.js": "~0.10.2"
   }
 }
