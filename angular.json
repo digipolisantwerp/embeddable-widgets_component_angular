@@ -17,7 +17,7 @@
             "index": "example/index.html",
             "main": "example/main.ts",
             "tsConfig": "example/tsconfig.app.json",
-            "polyfills": "example/polyfills.ts",
+            "polyfills": "zone.js",
             "assets": [
               "example/assets",
               "example/favicon.ico",
@@ -27,9 +27,7 @@
                 "output": "./assets/lib"
               }
             ],
-            "styles": [
-              "example/styles.scss"
-            ],
+            "styles": ["example/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -57,7 +55,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -91,16 +88,11 @@
           "options": {
             "main": "example/test.ts",
             "karmaConfig": "./karma.conf.js",
-            "polyfills": "example/polyfills.ts",
+            "polyfills": "zone.js",
             "tsConfig": "example/tsconfig.spec.json",
             "scripts": [],
-            "styles": [
-              "example/styles.scss"
-            ],
-            "assets": [
-              "example/assets",
-              "example/favicon.ico"
-            ]
+            "styles": ["example/styles.scss"],
+            "assets": ["example/assets", "example/favicon.ico"]
           }
         },
         "lint": {
@@ -110,9 +102,7 @@
               "example/tsconfig.app.json",
               "example/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
