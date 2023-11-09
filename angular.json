@@ -11,7 +11,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["@acpaas-ui/embeddable-widgets"],
+            "allowedCommonJsDependencies": [
+              "@acpaas-ui/embeddable-widgets"
+            ],
             "aot": true,
             "preserveSymlinks": true,
             "outputPath": "dist",
@@ -28,7 +30,9 @@
                 "output": "./assets/lib"
               }
             ],
-            "styles": ["example/styles.scss"],
+            "styles": [
+              "example/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -92,18 +96,22 @@
             "polyfills": "zone.js",
             "tsConfig": "example/tsconfig.spec.json",
             "scripts": [],
-            "styles": ["example/styles.scss"],
-            "assets": ["example/assets", "example/favicon.ico"]
+            "styles": [
+              "example/styles.scss"
+            ],
+            "assets": [
+              "example/assets",
+              "example/favicon.ico"
+            ]
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "example/tsconfig.app.json",
-              "example/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "example/**/*.ts",
+              "example/**/*.html"
+            ]
           }
         }
       }
@@ -120,5 +128,10 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
