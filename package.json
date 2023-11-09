@@ -74,7 +74,10 @@
   },
   "overrides": {
     "@angular-devkit/build-angular": {
-      "@babel/preset-env": "7.23.3"
+      "@babel/preset-env": "7.23.3",
+      "@babel/plugin-proposal-async-generator-functions": {
+        ".": "npm:@babel/plugin-transform-async-generator-functions@7.23.3"
+      }
     }
   }
 }
