@@ -47,7 +47,10 @@
     "@angular/platform-browser-dynamic": "^15.2.10",
     "@angular/router": "^15.2.10",
     "@types/jasmine": "^5.1.1",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
     "core-js": "^2.5.7",
+    "eslint": "^8.53.0",
     "jasmine-core": "^5.1.1",
     "jasmine-spec-reporter": "^7.0.0",
     "karma": "~6.4.2",
@@ -64,5 +67,10 @@
     "tslint": "~6.1.0",
     "typescript": "~4.9.3",
     "zone.js": "~0.13.0"
+  },
+  "overrides": {
+    "@angular-devkit/build-angular": {
+      "@babel/preset-env": "7.23.3"
+    }
   }
 }
