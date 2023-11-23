@@ -1,14 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { EmbeddableWidget } from '../../../../src/widget.decorator';
+import { Component, Input } from "@angular/core";
+import { EmbeddableWidget } from "../../../../src/widget.decorator";
 
 @Component({
-  selector: 'app-widget',
-  templateUrl: './widget.page.html',
-  styleUrls: ['./widget.page.scss'],
+  selector: "app-widget",
+  templateUrl: "./widget.page.html",
+  styleUrls: ["./widget.page.scss"],
 })
-@EmbeddableWidget('/assets/widget-definition.json')
+@EmbeddableWidget("/assets/widget-definition.json")
 export class WidgetPage {
-
   private props: any;
 
   @Input()
@@ -16,7 +15,7 @@ export class WidgetPage {
 
   constructor() {
     // this is overridden from definition JSON and from the container example
-    this.subject = 'Antwerp';
+    this.subject = "Antwerp";
   }
 
   public auiOnWidgetInit(props) {

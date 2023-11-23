@@ -9,8 +9,8 @@
   "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && ng serve --aot",
-    "build": "npm run clean && ng-packagr -p ng-package.json",
+    "start": "ng serve",
+    "build": "ng build --configuration production",
     "clean": "rimraf coverage",
     "test": "export NODE_OPTIONS=--openssl-legacy-provider && ng test --watch=false --code-coverage",
     "test-watch": "export NODE_OPTIONS=--openssl-legacy-provider && ng test --code-coverage",
@@ -29,44 +29,55 @@
     "library",
     "embeddable-widgets"
   ],
-  "peerDependencies": {
-    "@angular/common": ">=8.0.0",
-    "@angular/core": ">=8.0.0",
-    "@angular/forms": ">=8.0.0"
-  },
   "dependencies": {
-    "@acpaas-ui/embeddable-widgets": "^2.0.7"
+    "@acpaas-ui/embeddable-widgets": "^2.0.8",
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.803.29",
-    "@angular/animations": "^8.0.0",
-    "@angular/cli": "^8.0.0",
-    "@angular/common": "^8.0.0",
-    "@angular/compiler": "^8.0.0",
-    "@angular/compiler-cli": "^8.0.0",
-    "@angular/core": "^8.0.0",
-    "@angular/forms": "^8.0.0",
-    "@angular/language-service": "^8.0.0",
-    "@angular/platform-browser": "^8.0.0",
-    "@angular/platform-browser-dynamic": "^8.0.0",
-    "@angular/router": "^8.0.0",
-    "@types/jasmine": "^4.3.1",
-    "codelyzer": "^6.0.0",
+    "@angular-devkit/build-angular": "^15.2.10",
+    "@angular-eslint/builder": "15.2.1",
+    "@angular-eslint/eslint-plugin": "15.2.1",
+    "@angular-eslint/eslint-plugin-template": "15.2.1",
+    "@angular-eslint/schematics": "15.2.1",
+    "@angular-eslint/template-parser": "15.2.1",
+    "@angular/animations": "^15.2.10",
+    "@angular/cli": "^15.2.10",
+    "@angular/common": "^15.2.10",
+    "@angular/compiler": "^15.2.10",
+    "@angular/compiler-cli": "^15.2.10",
+    "@angular/core": "^15.2.10",
+    "@angular/forms": "^15.2.10",
+    "@angular/language-service": "^15.2.10",
+    "@angular/platform-browser": "^15.2.10",
+    "@angular/platform-browser-dynamic": "^15.2.10",
+    "@angular/router": "^15.2.10",
+    "@types/jasmine": "^5.1.1",
+    "@typescript-eslint/eslint-plugin": "5.48.2",
+    "@typescript-eslint/parser": "5.48.2",
     "core-js": "^2.5.7",
-    "jasmine-core": "^4.6.0",
+    "eslint": "^8.33.0",
+    "jasmine-core": "^5.1.1",
     "jasmine-spec-reporter": "^7.0.0",
-    "karma": "^6.0.0",
-    "karma-chrome-launcher": "^3.0.0",
+    "karma": "~6.4.2",
+    "karma-chrome-launcher": "~3.1.0",
     "karma-cli": "^2.0.0",
-    "karma-coverage-istanbul-reporter": "^3.0.0",
-    "karma-jasmine": "^5.0.0",
-    "karma-jasmine-html-reporter": "^2.0.0",
-    "ng-packagr": "^5.7.1",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0",
+    "ng-packagr": "^15.2.2",
+    "patch-package": "8.0.0",
     "rimraf": "^2.6.3",
     "rxjs": "^6.3.3",
     "ts-node": "^7.0.0",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.0",
-    "zone.js": "^0.9.1"
+    "typescript": "~4.9.3",
+    "zone.js": "~0.13.0"
+  },
+  "overrides": {
+    "@angular-devkit/build-angular": {
+      "@babel/preset-env": "7.23.3",
+      "@babel/plugin-proposal-async-generator-functions": {
+        ".": "npm:@babel/plugin-transform-async-generator-functions@7.23.3"
+      }
+    }
   }
 }

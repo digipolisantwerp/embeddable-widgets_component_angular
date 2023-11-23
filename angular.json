@@ -11,12 +11,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@acpaas-ui/embeddable-widgets"
+            ],
+            "aot": true,
             "preserveSymlinks": true,
             "outputPath": "dist",
             "index": "example/index.html",
             "main": "example/main.ts",
             "tsConfig": "example/tsconfig.app.json",
-            "polyfills": "example/polyfills.ts",
+            "polyfills": "zone.js",
             "assets": [
               "example/assets",
               "example/favicon.ico",
@@ -33,6 +37,12 @@
           },
           "configurations": {
             "prod": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "example/config/environment.ts",
@@ -41,10 +51,15 @@
               ]
             },
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -78,7 +93,7 @@
           "options": {
             "main": "example/test.ts",
             "karmaConfig": "./karma.conf.js",
-            "polyfills": "example/polyfills.ts",
+            "polyfills": "zone.js",
             "tsConfig": "example/tsconfig.spec.json",
             "scripts": [],
             "styles": [
@@ -91,31 +106,32 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "example/tsconfig.app.json",
-              "example/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "example/**/*.ts",
+              "example/**/*.html"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "embeddable-widgets_component_angular",
   "schematics": {
     "@schematics/angular:class": {
-      "spec": false
+      "skipTests": true
     },
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

@@ -1,28 +1,33 @@
 <header>
-    <h2>Embeddable Widget Example</h2>
+  <h2>Embeddable Widget Example</h2>
 </header>
 <div class="u-container">
+  <aui-embeddable-widget
+    *ngIf="(props$ | async)"
+    widgetUrl="/assets/widget-definition.json"
+    [props]="(props$ | async)"
+    (loaded)="onLoad($event)"
+    class="u-bg-light"
+  >
+  </aui-embeddable-widget>
 
-    <aui-embeddable-widget
-        *ngIf="(props$ | async)"
-        widgetUrl="/assets/widget-definition.json"
-        [props]="(props$ | async)"
-        (loaded)="onLoad($event)"
-        class="u-bg-light">
-    </aui-embeddable-widget>
+  <p class="u-margin-top-xs">
+    The widget is the part in <span class="u-bg-light">gray</span>.
+  </p>
 
-    <p class="u-margin-top-xs">
-        The widget is the part in <span class="u-bg-light">gray</span>.
-    </p>
+  <p *ngIf="clicks">
+    Received {{ clicks }}
+    <span *ngIf="clicks === 1">click</span>
+    <span *ngIf="clicks > 1">clicks</span>
+  </p>
 
-    <p *ngIf="clicks">
-        Received {{ clicks }}
-        <span *ngIf="clicks === 1">click</span>
-        <span *ngIf="clicks > 1">clicks</span>
-    </p>
-
-    <p>
-        <label>Text: </label>
-        <input type="text" [value]="(text$ | async)" (keyup)="onTextChange($event)" (change)="onTextChange($event)" />
-    </p>
+  <p>
+    <label>Text: </label>
+    <input
+      type="text"
+      [value]="(text$ | async)"
+      (keyup)="onTextChange($event)"
+      (change)="onTextChange($event)"
+    />
+  </p>
 </div>
