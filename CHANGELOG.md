@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 3.0.0 - 2023-11-23
+
+- **BREAKING**: support for Angular v15 and higher
+
 ## 2.0.1 - 2021-03-03
 
 - **BREAKING**: widgets built with `@acpaas-ui/embeddable-widgets` v1.x are no longer supported
