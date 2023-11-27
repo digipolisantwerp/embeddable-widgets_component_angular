@@ -10,7 +10,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build": "ng-packagr -p ng-package.json",
     "clean": "rimraf coverage",
     "test": "export NODE_OPTIONS=--openssl-legacy-provider && ng test --watch=false --code-coverage",
     "test-watch": "export NODE_OPTIONS=--openssl-legacy-provider && ng test --code-coverage",
