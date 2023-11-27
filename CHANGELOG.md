@@ -2,7 +2,11 @@
 
 ## Unreleased
 
-## 3.0.0 - 2023-11-23
+## 3.0.1 - 2023-11-27
+
+- Fixed package build
+
+## 3.0.0 - 2023-11-23 - BORKED
 
 - **BREAKING**: support for Angular v15 and higher
 
